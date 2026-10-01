@@ -12,18 +12,23 @@
 
 ## 发布
 
-GitHub Pages 使用 `main` 分支根目录。推送到 main 后由 GitHub Pages 自动发布。
+已启用 GitHub Pages，网址为 https://funsky96-lab.github.io/netkit/ 。使用 `main` 分支根目录，代码更新后自动发布，无需重复设置 Pages。
 
-首次发布：在 GitHub 创建空的公开仓库 `funsky96-lab/netkit`，让当前 GitHub 集成获得该仓库读写权限，然后执行：
+云端环境通过已授权的 `gh` API 发布，无需额外安装依赖或手动输入令牌。更新 NetKit：
 
 ```sh
-git remote add origin https://github.com/funsky96-lab/netkit.git
-git push -u origin main
+python scripts/publish.py . --root-update
 ```
 
-在仓库 Settings → Pages 选择 **Deploy from a branch**，分支选 **main**，目录选 **/(root)**。发布网址为 `https://funsky96-lab.github.io/netkit/`。
+以后新静态网站可以放在独立子目录，全自动上线，无需新建仓库或重新设置 Pages：
 
-如果 origin 已存在，用 `git remote set-url origin https://github.com/funsky96-lab/netkit.git` 更新。
+```sh
+python scripts/publish.py /path/to/new-site --site my-new-site
+```
+
+网址为 `https://funsky96-lab.github.io/netkit/my-new-site/`。网站应使用相对路径引用资源。脚本保留其他网站和未修改文件，不删除远程文件；等待 Pages 构建并检查首页返回 200 且内容匹配。支持 `--dry-run` 预览，`--include 文件路径` 仅发布指定文件。默认跳过隐藏文件、测试、脚本、依赖目录和符号链接。
+
+独立新仓库仍需要创建仓库与启用 Pages 的权限，当前连接对应 API 返回 403；复用已启用的仓库不受这两项限制。
 
 ## 计算规则与数据
 
