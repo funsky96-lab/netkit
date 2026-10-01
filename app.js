@@ -13,7 +13,7 @@ async function copy(text) {
 }
 document.querySelectorAll('[data-tool]').forEach(button=>button.addEventListener('click',()=>showTool(button.dataset.tool)));
 function showTool(name) {
-  if (!['network','time','currency'].includes(name)) name='network';
+  if (!['network','time','currency','commands'].includes(name)) name='network';
   document.querySelectorAll('.tool-panel').forEach(panel=>panel.hidden=panel.id!==name);
   document.querySelectorAll('[data-tool]').forEach(button=>{const selected=button.dataset.tool===name;button.classList.toggle('active',selected);button.setAttribute('aria-pressed',String(selected));});
   store.set('tool',name);

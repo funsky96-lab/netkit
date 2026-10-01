@@ -5,6 +5,7 @@
 - IPv4/CIDR/子网掩码计算、网关校验和等长子网划分。
 - UTC 与新加坡 UTC+8 双向时间换算及当前时钟。
 - 20 种常用货币的每日参考汇率兑换、货币交换及本地缓存。
+- 64 条 Windows、Linux、Cisco IOS / IOS XE 和 Huawei VRP 常用命令，支持关键词搜索、平台与类型筛选、一键复制。命令含模式说明，配置命令有单独标识。
 
 无需构建或安装依赖。用 `python -m http.server 8080` 预览，访问 `http://localhost:8080`。
 
